@@ -32,7 +32,7 @@ export default function (h, vm) {
     }, paintLine(colum, false)),
     // 竖线
     h('ul', {
-      class: 'absolute w-full h-full flex'
+      class: 'absolute w-full h-full flex flex-wrap'
     }, paintLine(row))
   ])
 }
