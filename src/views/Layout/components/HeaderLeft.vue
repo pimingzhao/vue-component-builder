@@ -15,16 +15,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'HeaderLeft',
-  data () {
-    return {
-    }
+  name: "HeaderLeft",
+  data() {
+    return {};
   },
-  methods: {
-  }
-}
+  methods: {}
+};
 </script>
 
 <style scoped>

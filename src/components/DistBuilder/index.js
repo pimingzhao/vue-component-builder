@@ -1,3 +1,3 @@
-import DistBuilder from './DistBuilder'
+import DistBuilder from "./DistBuilder";
 
-export default DistBuilder
+export default DistBuilder;

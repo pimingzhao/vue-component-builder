@@ -24,40 +24,40 @@
 
 <script>
 export default {
-  name: 'SiderMenu',
-  data () {
+  name: "SiderMenu",
+  data() {
     return {
       openNames: []
-    }
+    };
   },
   computed: {
-    menuList () {
+    menuList() {
       return [
         {
-          name: 'home',
-          title: '表单'
+          name: "home",
+          title: "表单"
         },
         {
-          name: 'table',
-          title: '表格'
+          name: "table",
+          title: "表格"
         }
-      ]
+      ];
     },
-    iconType () {
-      return this.$store.state.iconType || ''
+    iconType() {
+      return this.$store.state.iconType || "";
     },
-    hasMenuList () {
-      return this.menuList.length !== 0
+    hasMenuList() {
+      return this.menuList.length !== 0;
     },
-    seletedMenu () {
-      return this.$route.query.template || ''
+    seletedMenu() {
+      return this.$route.query.template || "";
     }
   },
   methods: {
-    handleSelect (name) {
+    handleSelect(name) {
       // TODO: 页面刷新后state 会更新： fix it
-      this.$store.commit('SET_SELECTED_MENU', name)
+      this.$store.commit("SET_SELECTED_MENU", name);
     }
   }
-}
+};
 </script>

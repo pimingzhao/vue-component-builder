@@ -6,8 +6,21 @@
  * @Description:
 -->
 <template>
-  <Poptip class="setting-wrapper" placement="left-start" width="400" :transfer="true" @on-popper-show="show=true" @on-popper-hide="show=false">
-    <Icon title="设置" class="cursor-pointer" :class="{ 'animation': show }" size="25" type="md-settings" />
+  <Poptip
+    class="setting-wrapper"
+    placement="left-start"
+    width="400"
+    :transfer="true"
+    @on-popper-show="show = true"
+    @on-popper-hide="show = false"
+  >
+    <Icon
+      title="设置"
+      class="cursor-pointer"
+      :class="{ animation: show }"
+      size="25"
+      type="md-settings"
+    />
     <div class="api" slot="content">
       <!-- 网格线 -->
       <Grid />
@@ -16,34 +29,34 @@
 </template>
 
 <script>
-import Grid from './Grid'
+import Grid from "./Grid";
 
 export default {
-  name: 'Setting',
+  name: "Setting",
   components: {
     Grid
   },
-  data () {
+  data() {
     return {
       show: false
-    }
+    };
   },
   methods: {
-    async handleResize () {
+    async handleResize() {
       if (!this.show) {
-        this.show = true
-        await this.$nextTick()
+        this.show = true;
+        await this.$nextTick();
       }
-      this.show = false
+      this.show = false;
     }
   },
-  created () {
-    window.addEventListener('resize', this.handleResize)
+  created() {
+    window.addEventListener("resize", this.handleResize);
   },
-  beforeDestroy () {
-    window.removeEventListener('resize', this.handleResize)
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
   }
-}
+};
 </script>
 
 <style scoped>

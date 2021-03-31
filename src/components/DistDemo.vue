@@ -6,30 +6,34 @@
  * @Description:
 -->
 <script>
-import Dragable from './DistDragable'
+import Dragable from "./DistDragable";
 
 export default {
-  name: 'Demo',
+  name: "Demo",
   comments: {
     Dragable
   },
   methods: {
-    handleDragStart (e) {
-      console.error(e)
+    handleDragStart(e) {
+      console.error(e);
     }
   },
-  render (h) {
-    return h('Dragable', {
-      class: 'demo',
-      on: {
-        'on-drag-start': this.handleDragStart
-      }
-    }, [
-      'hello'
-      // baseComp
-    ])
+  render(h) {
+    return h(
+      "Dragable",
+      {
+        class: "demo",
+        on: {
+          "on-drag-start": this.handleDragStart
+        }
+      },
+      [
+        "hello"
+        // baseComp
+      ]
+    );
   }
-}
+};
 </script>
 
 <style scoped>

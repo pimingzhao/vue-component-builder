@@ -18,30 +18,29 @@
 
 <script>
 export default {
-  name: 'Grid',
-  data () {
-    return {
-    }
+  name: "Grid",
+  data() {
+    return {};
   },
   computed: {
     showGrid: {
-      get () {
-        return this.$store.state.setting.showGrid
+      get() {
+        return this.$store.state.setting.showGrid;
       },
-      set (newVal) {
-        this.$store.commit('setting/SET_SHOW_GRID', newVal)
+      set(newVal) {
+        this.$store.commit("setting/SET_SHOW_GRID", newVal);
       }
     },
     gridSize: {
-      get () {
-        return this.$store.state.setting.gridSize
+      get() {
+        return this.$store.state.setting.gridSize;
       },
-      set (newVal) {
-        this.$store.commit('setting/SET_GRID_SIZE', newVal)
+      set(newVal) {
+        this.$store.commit("setting/SET_GRID_SIZE", newVal);
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

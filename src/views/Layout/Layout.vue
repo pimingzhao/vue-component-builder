@@ -26,29 +26,29 @@
 </template>
 
 <script>
-import HeaderLeft from './components/HeaderLeft'
-import Setting from './components/Setting'
-import SiderMenu from './components/SiderMenu'
+import HeaderLeft from "./components/HeaderLeft";
+import Setting from "./components/Setting";
+import SiderMenu from "./components/SiderMenu";
 
 export default {
-  name: 'layout',
+  name: "layout",
   components: {
     HeaderLeft,
     Setting,
     SiderMenu
   },
-  data () {
+  data() {
     return {
       isCollapsed: false
-    }
+    };
   },
   computed: {
-    menuitemClasses () {
-      return ['menu-item', this.isCollapsed ? 'collapsed-menu' : '']
+    menuitemClasses() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
   methods: {}
-}
+};
 </script>
 
 <style scoped>

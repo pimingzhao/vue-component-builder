@@ -5,23 +5,23 @@
  * @LastEditors: pimzh
  * @Description: 组件自动注册器
  */
-import Vue from 'vue'
+import Vue from "vue";
 
 // 检索目录下以 .vue 为结尾的文件
-const req = require.context('.', true, /\.vue$/)
+const req = require.context(".", true, /\.vue$/);
 req.keys().forEach(fileName => {
-  const str = 'Dist'
+  const str = "Dist";
   if (fileName.includes(str)) {
-    const componentConfig = req(fileName)
+    const componentConfig = req(fileName);
     // 如果没有提供 name 选项，则使用文件名
     const name =
       fileName.name ||
-      fileName.replace(/^\.\/(.*\/)?/, '').replace(/\.vue$/, '');
+      fileName.replace(/^\.\/(.*\/)?/, "").replace(/\.vue$/, "");
     // 注册以 Dist 开头的组件
     /^Dist/.test(name) &&
       Vue.component(
-        name.replace(str, ''),
+        name.replace(str, ""),
         componentConfig.default || componentConfig
-      )
+      );
   }
-})
+});

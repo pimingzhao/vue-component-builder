@@ -16,13 +16,13 @@
 
 <script>
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
       split: 0.5
-    }
+    };
   }
-}
+};
 </script>
 <style scoped>
 .split-wrapper {

@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import Layout from '@/views/Layout'
+import Layout from "@/views/Layout";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Layout
   }
-}
+};
 </script>
 
 <style>

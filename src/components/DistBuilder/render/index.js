@@ -1,5 +1,5 @@
-import renderGrid from './grid'
+import renderGrid from "./grid";
 
 export default {
   renderGrid
-}
+};

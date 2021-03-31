@@ -20,25 +20,24 @@
 
 <script>
 export default {
-  name: 'Dragable',
-  data () {
-    return {
-    }
+  name: "Dragable",
+  data() {
+    return {};
   },
   methods: {
-    handleDragStart (...args) {
-      this.$emit('on-drag-start', ...args)
+    handleDragStart(...args) {
+      this.$emit("on-drag-start", ...args);
     },
-    handleDragEnter (...args) {
-      this.$emit('on-drag-enter', ...args)
+    handleDragEnter(...args) {
+      this.$emit("on-drag-enter", ...args);
     },
-    handleDragLeave (...args) {
-      this.$emit('on-drag-leave', ...args)
+    handleDragLeave(...args) {
+      this.$emit("on-drag-leave", ...args);
     },
-    handleDragEnd (...args) {
-      this.draggable = false
-      this.$emit('on-drag-end', ...args)
+    handleDragEnd(...args) {
+      this.draggable = false;
+      this.$emit("on-drag-end", ...args);
     }
   }
-}
+};
 </script>
