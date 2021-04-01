@@ -3,7 +3,9 @@ export default {
 
   state: {
     showGrid: false,
-    gridSize: "m"
+    gridSize: "m",
+    currentView: "md-add",
+    viewList: ["md-remove", "md-add", "ios-grid-outline"]
   },
 
   mutations: {

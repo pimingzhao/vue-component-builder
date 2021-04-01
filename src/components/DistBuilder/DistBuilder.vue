@@ -1,19 +1,18 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:10:06
- * @LastEditTime: 2021-03-30 23:13:12
+ * @LastEditTime: 2021-04-01 11:21:40
  * @LastEditors: pimzh
  * @Description:
 -->
 <script>
-import { mapState, mapGetters } from "vuex";
-import render from "./render";
+import { mapState } from "vuex";
+import render from "../render";
 
 export default {
   name: "Builder",
   computed: {
-    ...mapState("setting", ["showGrid"]),
-    ...mapGetters("setting", ["gridOption"])
+    ...mapState("setting", ["showGrid"])
   },
   render(h) {
     return h(

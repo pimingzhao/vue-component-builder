@@ -1,5 +1,7 @@
 export default function(h, vm) {
-  const size = vm.gridOption;
+  console.log(this);
+  vm = vm["[[Target]]"];
+  const size = vm.$store.getters.setting.gridOption;
   let width = 0;
   let height = 0;
   if (vm.$refs.builder) {
