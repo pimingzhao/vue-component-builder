@@ -1,15 +1,20 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 09:34:27
- * @LastEditTime: 2021-03-30 16:01:16
+ * @LastEditTime: 2021-04-01 08:48:03
  * @LastEditors: pimzh
  * @Description:
 -->
 <template>
   <div class="split-wrapper overflow-hidden">
-    <Split class="w-full h-full" :min="0.3" v-model="split">
+    <Split
+      class="w-full h-full"
+      :min="0.3"
+      v-model="split"
+      @on-moving="handleMoving"
+    >
       <Demo slot="left" class="h-full" />
-      <Builder slot="right" class="h-full code-run" />
+      <Builder ref="builder" slot="right" class="h-full code-run" />
     </Split>
   </div>
 </template>
@@ -21,9 +26,15 @@ export default {
     return {
       split: 0.5
     };
+  },
+  methods: {
+    handleMoving() {
+      this.$refs.builder.handleResize();
+    }
   }
 };
 </script>
+
 <style scoped>
 .split-wrapper {
   padding: 5px;
