@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 09:34:27
- * @LastEditTime: 2021-04-01 08:48:03
+ * @LastEditTime: 2021-04-02 16:37:59
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -26,6 +26,17 @@ export default {
     return {
       split: 0.5
     };
+  },
+  created() {
+    this.$store.dispatch("template/addTemplate", {
+      name: "按钮",
+      components: [
+        {
+          name: "Button",
+          props: {}
+        }
+      ]
+    });
   },
   methods: {
     handleMoving() {

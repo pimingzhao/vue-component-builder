@@ -1,7 +1,7 @@
 /*
  * @Author: pimzh
  * @Date: 2021-04-01 11:01:04
- * @LastEditTime: 2021-04-01 14:02:10
+ * @LastEditTime: 2021-04-02 16:39:12
  * @LastEditors: pimzh
  * @Description: 左侧菜单选中的模板
  */
@@ -12,33 +12,49 @@
  *  components: [Comp,...]
  * }
  */
+import Vue from "vue";
+import { getOption } from "@/api/options";
+
 export default {
   namespaced: true,
 
   state: {
     templates: [
       // Template
-      {
-        name: "按钮",
-        components: [
-          {
-            name: "Button"
-          }
-        ]
-      }
-    ]
+    ],
+    // compOption
+    compOption: {}
   },
 
   mutations: {
     ADD_TEMPLATE(state, template) {
-      state.components.push(template);
+      state.templates.push(template);
     },
     REMOVE_TEMPLATE(state, template) {
-      state.components.splice(state.components.indexOf(template), 1);
+      state.templates.splice(state.templates.indexOf(template), 1);
+    },
+    SET_PROPS(state, { name, i, key, val }) {
+      const find = state.templates.find(template => template.name === name);
+      find && Vue.set(find.components[i].props, key, val);
+    },
+    SET_OPTION(state, { compName, option }) {
+      state.compOption[compName] = option;
     }
   },
 
-  actions: {},
+  actions: {
+    async addTemplate({ commit, state }, template) {
+      commit("ADD_TEMPLATE", template);
+      const compName = template.components[0].name;
+      if (!Object.prototype.hasOwnProperty.call(state.compOption, compName)) {
+        const option = await getOption(compName);
+        commit("SET_OPTION", {
+          compName,
+          option
+        });
+      }
+    }
+  },
 
   getters: {}
 };

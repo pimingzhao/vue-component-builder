@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "name": "type",
+      "default": "default",
+      "data": ["default", "primary", "warning", "error"]
+    },
+    {
+      "name": "ghost",
+      "default": false
+    }
+  ]
+}

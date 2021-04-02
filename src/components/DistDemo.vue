@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:13:27
- * @LastEditTime: 2021-04-01 17:44:57
+ * @LastEditTime: 2021-04-02 16:01:05
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -9,7 +9,6 @@
 import { mapState } from "vuex";
 
 import Dragable from "./DistDragable";
-import render from "./render";
 import renderWrapper from "./renderWrapper";
 
 export default {
@@ -30,13 +29,15 @@ export default {
           },
           [
             h(
-              "p",
+              "h3",
               {
                 class: "demo-item-title"
               },
-              item.name || "fdsaf"
+              item.name || "hello, you have not set the name."
             ),
-            ...item.components.map(comp => render[comp.name](h, comp))
+            ...item.components.map((comp, i) =>
+              renderWrapper[comp.name].call(this, h, comp, i, item.name)
+            )
           ]
         );
       });
@@ -83,5 +84,14 @@ export default {
 .demo .demo-container {
   height: calc(100% - 2rem);
   padding-right: 10px;
+}
+.demo .demo-item-title {
+  margin-bottom: 5px;
+}
+.comp-option .comp-option-item {
+  margin-bottom: 8px;
+}
+.comp-option .comp-option-label {
+  font-weight: bold;
 }
 </style>

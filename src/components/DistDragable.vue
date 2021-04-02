@@ -1,15 +1,15 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 16:23:19
- * @LastEditTime: 2021-04-01 08:54:15
+ * @LastEditTime: 2021-04-02 14:46:02
  * @LastEditors: pimzh
  * @Description:
 -->
 <template>
   <div
     :draggable="true"
-    class="inline-block no-select"
-    :class="{ border: border }"
+    class="inline-block no-select cursor-pointer draggable"
+    :class="{ 'border border-dashed rounded': border }"
     @dragstart="handleDragStart"
     @dragenter="handleDragEnter"
     @dragleave="handleDragLeave"
@@ -48,3 +48,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.draggable {
+  padding: 5px;
+}
+</style>
