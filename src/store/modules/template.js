@@ -28,6 +28,7 @@ export default {
 
   mutations: {
     ADD_TEMPLATE(state, template) {
+      if (state.templates.includes(template)) return;
       state.templates.push(template);
     },
     REMOVE_TEMPLATE(state, template) {
@@ -44,7 +45,6 @@ export default {
 
   actions: {
     async addTemplate({ commit, state }, template) {
-      commit("ADD_TEMPLATE", template);
       const compName = template.components[0].name;
       if (!Object.prototype.hasOwnProperty.call(state.compOption, compName)) {
         const option = (await getOption(compName)).data;
@@ -53,6 +53,7 @@ export default {
           option
         });
       }
+      commit("ADD_TEMPLATE", template);
     }
   },
 

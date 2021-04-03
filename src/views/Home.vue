@@ -27,17 +27,7 @@ export default {
       split: 0.5
     };
   },
-  created() {
-    this.$store.dispatch("template/addTemplate", {
-      name: "按钮",
-      components: [
-        {
-          name: "Button",
-          props: {}
-        }
-      ]
-    });
-  },
+  created() {},
   methods: {
     handleMoving() {
       this.$refs.builder.handleResize();
