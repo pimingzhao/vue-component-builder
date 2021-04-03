@@ -1,7 +1,7 @@
 /*
  * @Author: pimzh
  * @Date: 2021-04-01 11:01:04
- * @LastEditTime: 2021-04-02 16:39:12
+ * @LastEditTime: 2021-04-03 20:04:00
  * @LastEditors: pimzh
  * @Description: 左侧菜单选中的模板
  */
@@ -47,7 +47,7 @@ export default {
       commit("ADD_TEMPLATE", template);
       const compName = template.components[0].name;
       if (!Object.prototype.hasOwnProperty.call(state.compOption, compName)) {
-        const option = await getOption(compName);
+        const option = (await getOption(compName)).data;
         commit("SET_OPTION", {
           compName,
           option

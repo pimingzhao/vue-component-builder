@@ -1,50 +1,41 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-10 17:30:04
- * @LastEditTime: 2021-03-30 11:14:10
+ * @LastEditTime: 2021-04-03 21:39:48
  * @LastEditors: pimzh
  * @Description:
 -->
 <template>
-  <Menu
-    v-if="hasMenuList"
-    theme="dark"
-    width="auto"
-    class="h-full"
-    :active-name="seletedMenu"
-    :open-names="openNames"
-    @on-select="handleSelect"
-  >
-    <MenuItem v-for="(item, i) in menuList" :key="i" :name="item.name">
-      <!-- <Icon :type="iconType"></Icon> -->
-      <span>{{ item.title }}</span>
-    </MenuItem>
-  </Menu>
+  <ul :class="prefixCls" class="">
+    <li :class="`${prefixCls}-item`" v-for="(item, i) in menuList" :key="i">
+      <span class="text-default" :class="`${prefixCls}-span`">{{item.name}}</span>
+    </li>
+  </ul>
 </template>
 
 <script>
+const prefixCls = "sider-menu";
+
 export default {
   name: "SiderMenu",
   data() {
     return {
-      openNames: []
+      openNames: [],
+      prefixCls: prefixCls
     };
   },
   computed: {
     menuList() {
       return [
         {
-          name: "home",
-          title: "表单"
+          name: "basic",
+          title: "基础组件"
         },
         {
-          name: "table",
-          title: "表格"
+          name: "layout",
+          title: "布局组件"
         }
       ];
-    },
-    iconType() {
-      return this.$store.state.iconType || "";
     },
     hasMenuList() {
       return this.menuList.length !== 0;
@@ -61,3 +52,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.sider-menu {}
+</style>
