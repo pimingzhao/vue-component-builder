@@ -16,7 +16,13 @@ export default {
   namespaced: true,
 
   state: {
-    components: []
+    components: [],
+    tree: [
+      {
+        name: "Buton",
+        props: {}
+      }
+    ]
   },
 
   mutations: {
