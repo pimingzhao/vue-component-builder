@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-10 17:30:04
- * @LastEditTime: 2021-04-03 21:39:48
+ * @LastEditTime: 2021-04-04 10:13:54
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -47,7 +47,8 @@ export default {
               components: [
                 {
                   name: "Button",
-                  props: {}
+                  props: {},
+                  slot: "完成"
                 }
               ]
             }

@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:13:27
- * @LastEditTime: 2021-04-02 16:01:05
+ * @LastEditTime: 2021-04-04 10:08:59
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -9,7 +9,7 @@
 import { mapState } from "vuex";
 
 import Dragable from "./DistDragable";
-import renderWrapper from "./renderWrapper";
+import render from "./render";
 
 export default {
   name: "Demo",
@@ -36,7 +36,7 @@ export default {
               item.name || "hello, you have not set the name."
             ),
             ...item.components.map((comp, i) =>
-              renderWrapper[comp.name].call(this, h, comp, i, item.name)
+              render.renderWrapper.call(this, h, comp, i, item.name)
             )
           ]
         );
