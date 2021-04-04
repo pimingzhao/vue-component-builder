@@ -12,7 +12,7 @@ import Dragable from "../DistDragable";
 
 export default {
   name: "Builder",
-  components:{
+  components: {
     Dragable
   },
   computed: {
@@ -25,12 +25,15 @@ export default {
         class: "relative",
         ref: "builder"
       },
-      [this.showGrid && render.renderGrid(h, this),
-      h("Dragable", {
-        class: "w-full h-full"
-      }, [
-        "hello y"
-      ])
+      [
+        this.showGrid && render.renderGrid(h, this),
+        h(
+          "Dragable",
+          {
+            class: "w-full h-full"
+          },
+          ["hello y"]
+        )
       ]
     );
   },
