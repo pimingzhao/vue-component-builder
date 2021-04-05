@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:10:06
- * @LastEditTime: 2021-04-03 22:28:26
+ * @LastEditTime: 2021-04-05 20:18:19
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -16,9 +16,12 @@ export default {
     Dragable
   },
   computed: {
-    ...mapState("setting", ["showGrid"])
+    ...mapState("setting", ["showGrid"]),
+    ...mapState("component", ["compTree"])
   },
   render(h) {
+    const _this=this;
+    const { showGrid } = this;
     return h(
       "div",
       {
@@ -26,13 +29,17 @@ export default {
         ref: "builder"
       },
       [
-        this.showGrid && render.renderGrid(h, this),
+        showGrid && render.renderGrid(h, this),
         h(
-          "Dragable",
+          "div",
           {
-            class: "w-full h-full"
+            class: showGrid ? "absolute builder-wrapper h-full" : "w-full h-full",
+            on: {
+              dragover: e => e.preventDefault(),
+              drop: () => _this.handleDrop()
+            }
           },
-          ["hello y"]
+          _this.compTree.map(comp=>render.Comp(h,comp))
         )
       ]
     );
@@ -41,6 +48,9 @@ export default {
     handleResize() {
       this.$store.commit("setting/SET_SHOW_GRID", false);
       this.$store.commit("setting/SET_SHOW_GRID", true);
+    },
+    handleDrop(params) {
+      this.$store.dispatch("dragable/handleDrop", params);
     }
   },
   mounted() {
@@ -51,3 +61,10 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.builder-wrapper {
+  width: calc(100% - 15px);
+}
+</style>

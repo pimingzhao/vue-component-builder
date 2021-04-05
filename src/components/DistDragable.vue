@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 16:23:19
- * @LastEditTime: 2021-04-02 14:46:02
+ * @LastEditTime: 2021-04-05 14:31:05
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -10,10 +10,12 @@
     :draggable="true"
     class="inline-block no-select cursor-pointer draggable"
     :class="{ 'border border-dashed rounded': border }"
+    @dragover="e => e.preventDefault()"
     @dragstart="handleDragStart"
     @dragenter="handleDragEnter"
     @dragleave="handleDragLeave"
     @dragend="handleDragEnd"
+    @ondrop="handleDrop"
   >
     <slot />
   </div>
@@ -44,6 +46,9 @@ export default {
     handleDragEnd(...args) {
       this.draggable = false;
       this.$emit("on-drag-end", ...args);
+    },
+    handleDrop(...args) {
+      this.$emit("on-drop", ...args);
     }
   }
 };

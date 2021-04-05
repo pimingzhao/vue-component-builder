@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:13:27
- * @LastEditTime: 2021-04-04 10:08:59
+ * @LastEditTime: 2021-04-05 14:23:33
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -44,6 +44,9 @@ export default {
     },
     handleDragStart(e) {
       console.error(e);
+    },
+    handleDragEnd(e,Name,comp){
+      console.log(e,Name,comp);
     }
   },
   render(h) {
