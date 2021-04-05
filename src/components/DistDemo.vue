@@ -45,8 +45,8 @@ export default {
     handleDragStart(e) {
       console.error(e);
     },
-    handleDragEnd(e,Name,comp){
-      console.log(e,Name,comp);
+    handleDragEnd(e, Name, comp) {
+      console.log(e, Name, comp);
     }
   },
   render(h) {

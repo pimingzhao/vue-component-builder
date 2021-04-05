@@ -19,7 +19,7 @@ export default {
       store.commit("component/ADD_COMP", state.dragSrc, parent);
       Vue.nextTick(() => {
         commit("SET_DRAG_SRC", null);
-      })
+      });
     }
   },
 

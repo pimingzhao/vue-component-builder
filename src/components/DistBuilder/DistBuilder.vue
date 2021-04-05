@@ -20,7 +20,7 @@ export default {
     ...mapState("component", ["compTree"])
   },
   render(h) {
-    const _this=this;
+    const _this = this;
     const { showGrid } = this;
     return h(
       "div",
@@ -33,13 +33,15 @@ export default {
         h(
           "div",
           {
-            class: showGrid ? "absolute builder-wrapper h-full" : "w-full h-full",
+            class: showGrid
+              ? "absolute builder-wrapper h-full"
+              : "w-full h-full",
             on: {
               dragover: e => e.preventDefault(),
               drop: () => _this.handleDrop()
             }
           },
-          _this.compTree.map(comp=>render.Comp(h,comp))
+          _this.compTree.map(comp => render.Comp(h, comp))
         )
       ]
     );
@@ -61,7 +63,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 .builder-wrapper {
