@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/vue-component-builder",
+  publicPath: "/",
   devServer: {
     open: true
   },

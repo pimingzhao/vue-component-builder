@@ -9,19 +9,36 @@
 /**
  * interface Comp {
  *  name: "Button",
- *  type?: "primary"
+ *  props: {},
+ *  slot
  * }
  */
 export default {
   namespaced: true,
 
   state: {
-    components: []
+    compTree: [
+      // Comp
+    ]
   },
 
   mutations: {
-    ADD_COMP(state, comp) {
-      state.components.push(comp);
+    ADD_COMP(state, comp, parent) {
+      if (!parent) {
+        state.compTree.push(comp);
+        return;
+      }
+      const loop = arr => {
+        arr.forEach(item => {
+          if (item === parent) {
+            !item.children && (item.children = []);
+            item.children.push(comp);
+          } else if (item.children && item.children.length) {
+            loop(item.children);
+          }
+        });
+      };
+      loop(state.compTree);
     },
     REMOVE_COMP(state, comp) {
       state.components.splice(state.components.indexOf(comp), 1);

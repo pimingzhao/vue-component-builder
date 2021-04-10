@@ -28,7 +28,7 @@ export default function(h, vm) {
   return h(
     "div",
     {
-      class: "border absolute h-full overflow-hidden",
+      class: "absolute h-full overflow-hidden",
       style: "width: calc(100% - 15px)"
     },
     [
