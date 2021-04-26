@@ -10,7 +10,7 @@ export default function(h, comp, i, Name) {
       {
         on: {
           "on-drag-start": e =>
-            _this.$store.commit("dragable/SET_DRAG_SRC", comp),
+            _this.$store.commit("component/SET_DRAG_SRC", comp),
           "on-drag-end": e => _this.handleDragEnd(e, Name, comp)
         }
       },

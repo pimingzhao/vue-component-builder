@@ -1,22 +1,22 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 16:23:19
- * @LastEditTime: 2021-04-09 14:25:09
+ * @LastEditTime: 2021-04-26 15:15:45
  * @LastEditors: pimzh
  * @Description:
 -->
 <template>
   <div
-    :draggable="true"
+    :draggable="draggable"
     class="inline-block no-select cursor-pointer"
     :class="{ 'border border-dashed rounded': border }"
     :style="style"
-    @dragover="e => e.preventDefault()"
+    @dragover="e => !draggable && e.preventDefault()"
     @dragstart="handleDragStart"
     @dragenter="handleDragEnter"
     @dragleave="handleDragLeave"
     @dragend="handleDragEnd"
-    @ondrop="handleDrop"
+    @drop="handleDrop"
   >
     <slot />
   </div>
@@ -33,6 +33,10 @@ export default {
     padding: {
       type: [Number, String],
       default: "4px"
+    },
+    draggable: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -58,11 +62,11 @@ export default {
       this.$emit("on-drag-leave", ...args);
     },
     handleDragEnd(...args) {
-      this.draggable = false;
       this.$emit("on-drag-end", ...args);
     },
-    handleDrop(...args) {
-      this.$emit("on-drop", ...args);
+    handleDrop(e) {
+      e.preventDefault();
+      this.$emit("on-drop", e);
     }
   }
 };

@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:10:06
- * @LastEditTime: 2021-04-05 20:18:19
+ * @LastEditTime: 2021-04-26 15:31:51
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -21,7 +21,6 @@ export default {
   },
   render(h) {
     const _this = this;
-    const { showGrid } = this;
     return h(
       "div",
       {
@@ -29,11 +28,11 @@ export default {
         ref: "builder"
       },
       [
-        showGrid && render.renderGrid(h, this),
+        _this.showGrid && render.renderGrid(h, _this),
         h(
           "div",
           {
-            class: showGrid
+            class: _this.showGrid
               ? "absolute builder-wrapper h-full"
               : "w-full h-full",
             on: {
@@ -52,7 +51,7 @@ export default {
       this.$store.commit("setting/SET_SHOW_GRID", true);
     },
     handleDrop(params) {
-      this.$store.dispatch("dragable/handleDrop", params);
+      this.$store.dispatch("component/handleDrop", params);
     }
   },
   mounted() {

@@ -1,7 +1,7 @@
 /*
  * @Author: pimzh
  * @Date: 2021-04-01 11:01:04
- * @LastEditTime: 2021-04-01 11:01:57
+ * @LastEditTime: 2021-04-26 15:10:52
  * @LastEditors: pimzh
  * @Description: 左侧demo面包定制好的组件
  */
@@ -17,15 +17,21 @@ export default {
   namespaced: true,
 
   state: {
+    dragSrc: null, // 左侧拖拽组件的组件参数
     compTree: [
       // Comp
     ]
   },
 
   mutations: {
-    ADD_COMP(state, comp, parent) {
+    SET_DRAG_SRC(state, src) {
+      state.dragSrc = JSON.parse(JSON.stringify(src));
+    },
+    ADD_COMP(state, parent) {
+      const comp = state.dragSrc;
       if (!parent) {
         state.compTree.push(comp);
+        state.dragSrc = null;
         return;
       }
       const loop = arr => {
@@ -39,13 +45,20 @@ export default {
         });
       };
       loop(state.compTree);
+      state.dragSrc = null;
     },
     REMOVE_COMP(state, comp) {
       state.components.splice(state.components.indexOf(comp), 1);
     }
   },
 
-  actions: {},
+  actions: {
+    handleDrop({ state, commit }, parent) {
+      // 无起始拖拽元素
+      if (!state.dragSrc) return;
+      commit("ADD_COMP", parent);
+    }
+  },
 
   getters: {}
 };
