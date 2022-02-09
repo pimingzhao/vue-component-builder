@@ -75,6 +75,12 @@
 .border-dashed {
   border-style: dashed;
 }
+.border-t {
+  border-top: 1px solid #dcdee2;
+}
+.border-l {
+  border-left: 1px solid #dcdee2;
+}
 .border-b {
   border-bottom: 1px solid #dcdee2;
 }

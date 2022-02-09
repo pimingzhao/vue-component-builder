@@ -6,6 +6,16 @@
       "data": ["default", "primary", "warning", "error"]
     },
     {
+      "name": "size",
+      "default": "default",
+      "data": ["small", "default", "large"]
+    },
+    {
+      "name": "shape",
+      "default": null,
+      "data": ["circle", null]
+    },
+    {
       "name": "ghost",
       "default": false
     }

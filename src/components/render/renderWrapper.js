@@ -1,4 +1,4 @@
-import Comp from "./Comp";
+import renderComp from "./renderComp";
 import renderOption from "./renderOption";
 
 export default function(h, comp, i, Name) {
@@ -14,7 +14,7 @@ export default function(h, comp, i, Name) {
           "on-drag-end": e => _this.handleDragEnd(e, Name, comp)
         }
       },
-      [Comp(h, comp)]
+      [renderComp(h, comp)]
     )
   ]);
 }

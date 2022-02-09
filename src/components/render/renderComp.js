@@ -1,8 +1,10 @@
 const render = (h, comp) => {
   const { name, props, slot } = comp;
-  const hasChld = Array.isArray(comp.children);
-  const children = hasChld
+
+  const children = Array.isArray(comp.children)
     ? comp.children.map(child => render(h, child))
+    : typeof comp.children === "string"
+    ? comp.children
     : slot || "";
   return h(
     name,

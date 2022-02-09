@@ -1,7 +1,7 @@
 export default function(h, vm) {
   const size = vm.$store.getters["setting/gridOption"];
-  let width = 0;
-  let height = 0;
+  let width = 1920;
+  let height = 1080;
   if (vm.$refs.builder) {
     // vm.$refs["builder"]
     width = vm.$refs.builder.clientWidth;
@@ -28,7 +28,7 @@ export default function(h, vm) {
   return h(
     "div",
     {
-      class: "absolute h-full overflow-hidden",
+      class: "absolute h-full overflow-hidden border",
       style: "width: calc(100% - 15px)"
     },
     [

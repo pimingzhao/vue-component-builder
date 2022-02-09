@@ -1,19 +1,20 @@
+import { storage } from "@/utils";
 export default {
   namespaced: true,
 
   state: {
-    showGrid: false,
-    gridSize: "m",
-    currentView: "md-add",
-    viewList: ["md-remove", "md-add", "ios-grid-outline"]
+    showGrid: storage.get("setting/showGrid") === 1,
+    gridSize: storage.get("setting/gridSize") || "m"
   },
 
   mutations: {
     SET_SHOW_GRID(state, val) {
       state.showGrid = val;
+      storage.set("setting/showGrid", val ? 1 : 0);
     },
     SET_GRID_SIZE(state, val) {
       state.gridSize = val;
+      storage.set("setting/gridSize", val);
     }
   },
 

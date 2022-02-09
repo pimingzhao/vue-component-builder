@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 09:47:06
- * @LastEditTime: 2021-03-30 13:21:34
+ * @LastEditTime: 2022-02-09 10:35:54
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -31,7 +31,7 @@ import Setting from "./components/Setting";
 import SiderMenu from "./components/SiderMenu";
 
 export default {
-  name: "layout",
+  name: "LayoutView",
   components: {
     HeaderLeft,
     Setting,

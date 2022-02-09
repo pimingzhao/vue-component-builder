@@ -49,7 +49,7 @@ export default function(h, comp, i, Name, vm) {
                   label: item
                 }
               },
-              [item]
+              [item || "unset"]
             )
           )
         );

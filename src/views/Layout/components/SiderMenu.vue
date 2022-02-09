@@ -1,7 +1,7 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-10 17:30:04
- * @LastEditTime: 2021-04-26 14:00:08
+ * @LastEditTime: 2022-02-09 15:15:21
  * @LastEditors: pimzh
  * @Description:
 -->
@@ -25,6 +25,7 @@
 
 <script>
 const prefixCls = "sider-menu";
+import { storage } from "@/utils";
 
 export default {
   name: "SiderMenu",
@@ -32,12 +33,7 @@ export default {
     return {
       openNames: [],
       prefixCls: prefixCls,
-      activeList: []
-    };
-  },
-  computed: {
-    menuList() {
-      return [
+      menuList: [
         {
           name: "basic",
           title: "基础组件",
@@ -48,7 +44,7 @@ export default {
                 {
                   name: "Button",
                   props: {},
-                  slot: "完成"
+                  children: "完成"
                 }
               ]
             }
@@ -57,29 +53,34 @@ export default {
         {
           name: "layout",
           title: "布局组件"
-          // compenonts: ['top', 'nav', 'content']
+          // compenonts: ["top", "nav", "content"]
         }
-      ];
-    },
-    hasMenuList() {
-      return this.menuList.length !== 0;
-    },
-    seletedMenu() {
-      return this.$route.query.template || "";
-    }
+      ],
+      activeList: storage.get("activeList") || []
+    };
   },
   created() {
-    // 添加初始数据
-    if (this.hasMenuList) {
+    if (this.activeList.length === 0) {
       this.activeList.push(this.menuList[0].name);
       this.menuList[0].compenonts.forEach(comp => {
         this.$store.dispatch("template/addTemplate", comp);
       });
+      this.updateStore();
+    } else {
+      this.activeList.forEach(listItem => {
+        this.menuList
+          .find(item => item.name === listItem)
+          .compenonts.forEach(comp => {
+            this.$store.dispatch("template/addTemplate", comp);
+          });
+      });
     }
   },
   methods: {
+    updateStore() {
+      storage.set("activeList", this.activeList);
+    },
     handleSelect(name, i) {
-      console.log(this.activeList.includes(name));
       const listIndex = this.activeList.indexOf(name);
       if (this.activeList.includes(name)) {
         this.activeList.splice(listIndex, 1);
@@ -92,9 +93,7 @@ export default {
           this.$store.dispatch("template/addTemplate", comp);
         });
       }
-
-      console.log(name);
-      // TODO: 页面刷新后state 会更新： fix it
+      this.updateStore();
     }
   }
 };

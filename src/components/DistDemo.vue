@@ -1,21 +1,17 @@
 <!--
  * @Author: pimzh
  * @Date: 2021-03-30 11:13:27
- * @LastEditTime: 2021-04-05 14:23:33
+ * @LastEditTime: 2022-02-09 12:30:35
  * @LastEditors: pimzh
  * @Description:
 -->
 <script>
 import { mapState } from "vuex";
 
-import Dragable from "./DistDragable";
 import render from "./render";
 
 export default {
   name: "Demo",
-  comments: {
-    Dragable
-  },
   computed: {
     ...mapState("template", ["templates"])
   },
